@@ -1,0 +1,58 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+}
+
+.App-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.agent-selector {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.agent-selector button {
+  background-color: #4a4a4a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.agent-selector button:hover {
+  background-color: #5a5a5a;
+}
+
+.agent-selector button.active {
+  background-color: #61dafb;
+  color: #282c34;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+footer {
+  background-color: #282c34;
+  color: white;
+  padding: 10px;
+  font-size: 0.8rem;
+}

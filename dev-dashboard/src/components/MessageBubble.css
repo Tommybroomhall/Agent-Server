@@ -1,0 +1,42 @@
+.message-bubble {
+  max-width: 70%;
+  padding: 10px 15px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  position: relative;
+  word-wrap: break-word;
+}
+
+.message-bubble.user {
+  background-color: #dcf8c6;
+  margin-left: auto;
+  border-bottom-right-radius: 0;
+}
+
+.message-bubble.agent {
+  background-color: white;
+  margin-right: auto;
+  border-bottom-left-radius: 0;
+}
+
+.message-text {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.message-timestamp {
+  font-size: 0.7rem;
+  color: #999;
+  text-align: right;
+  margin-top: 5px;
+}
+
+.message-media {
+  margin-bottom: 10px;
+}
+
+.message-media img {
+  max-width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+}
