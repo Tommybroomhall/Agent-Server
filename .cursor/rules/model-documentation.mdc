@@ -1,0 +1,59 @@
+---
+description: his rule provides specific guidance for documenting database models in the WhatsApp Business Assistant. Models require special attention as they define the core data structures of the system.
+globs: 
+alwaysApply: false
+---
+# Database Model Documentation Requirements
+
+This rule provides specific guidance for documenting database models in the WhatsApp Business Assistant. Models require special attention as they define the core data structures of the system.
+
+## Example Model Files
+
+For reference, see these well-documented model files:
+- [Order.ts](mdc:src/db/models/Order.ts)
+- [Message.ts](mdc:src/db/models/Message.ts)
+- [Issue.ts](mdc:src/db/models/Issue.ts)
+
+## Required Sections for Models
+
+All model files must include these sections:
+
+1. **File Header**: Standard header as defined in [documentation-standards.mdc](mdc:documentation-standards.mdc)
+
+2. **Interface Documentation**: 
+   - Must document each field with its purpose
+   - Must explain relationships to other models
+   - Must note any default values or constraints
+
+3. **Schema Documentation**:
+   - Must explain validation rules in detail
+   - Must document the purpose of any indexes
+   - Must include production considerations
+
+4. **Schema Field Comments**:
+   - Each field or field group in the schema should have inline comments
+   - Comments should explain business logic, not just technical details
+
+5. **Middleware Documentation** (if applicable):
+   - Document any pre/post hooks and their purposes
+   - Explain validation logic
+   - Note any side effects of middleware functions
+
+## Data Relationships
+
+When models reference other models, document:
+
+1. **Relationship Type**: One-to-one, one-to-many, many-to-many
+2. **Foreign Key Reference**: Which field references which other model
+3. **Cascade Behavior**: What happens when related records are deleted
+4. **Indexing Strategy**: How the relationship is optimized for queries
+
+## Schema Best Practices
+
+When documenting schemas, adhere to these best practices:
+
+1. **Group Related Fields**: Use comments to visually group related fields
+2. **Document Enums**: List all valid values for enum fields with their meanings
+3. **Explain Defaults**: Document why default values were chosen
+4. **Note Sensitive Fields**: Highlight fields containing sensitive/PII data
+

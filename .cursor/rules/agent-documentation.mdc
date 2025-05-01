@@ -1,0 +1,71 @@
+---
+description:  This rule defines specific documentation requirements for agent implementations in the WhatsApp Business Assistant. Agent files are particularly important as they contain the core business logic of the system.
+globs: 
+alwaysApply: false
+---
+# Agent Implementation Documentation
+
+This rule defines specific documentation requirements for agent implementations in the WhatsApp Business Assistant. Agent files are particularly important as they contain the core business logic of the system.
+
+## Example Agent Files
+
+For reference, see these well-documented agent files:
+- [staffAgent.ts](mdc:src/agents/staffAgent.ts)
+
+## Required Sections for Agent Files
+
+All agent implementation files must include:
+
+1. **File Header**: Standard header as defined in [documentation-standards.mdc](mdc:documentation-standards.mdc), with special emphasis on:
+   - Detailed description of the agent's role and purpose
+   - Connections to other system components
+   - Key capabilities the agent provides
+
+2. **Primary Handler Documentation**:
+   - Clear documentation of the main entry point function
+   - Explanation of input/output contract
+   - Overview of the general workflow
+
+3. **Section Organization**:
+   - Code must be organized into clearly labeled sections (Message Processing, Specialized Handlers, Utility Functions, etc.)
+   - Each section must have a header comment explaining its purpose
+
+4. **Function Documentation**:
+   - Each function must be documented following the standard in [documentation-standards.mdc](mdc:documentation-standards.mdc)
+   - Special attention to workflow steps and production considerations
+
+5. **Error Handling Documentation**:
+   - Document how errors are handled
+   - Explain error response formats
+   - Note any error logging or monitoring
+
+## Command Processing
+
+For agents that process commands:
+
+1. **Document Command Formats**:
+   - List all recognized commands with their syntax
+   - Show examples of valid command usage
+   - Document required and optional parameters
+
+2. **Command Validation**:
+   - Describe how commands are validated
+   - Document error responses for invalid commands
+
+3. **Future Expansion**:
+   - Note considerations for adding new commands
+   - Document the command parsing architecture
+
+## External Integrations
+
+When agents integrate with external systems:
+
+1. **Document API Dependencies**:
+   - List all external APIs or services used
+   - Note authentication requirements
+   - Document retry/fallback strategies
+
+2. **Rate Limiting Considerations**:
+   - Document any rate limiting implemented or required
+   - Note potential bottlenecks or throughput limitations
+

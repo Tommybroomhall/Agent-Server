@@ -1,0 +1,70 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Documentation-Focused Code Review Checklist
+
+This rule provides a checklist for reviewing code changes with a focus on documentation quality. Use this checklist during code reviews to ensure documentation standards are maintained.
+
+## Before Approving Any Pull Request
+
+Verify the following documentation aspects:
+
+### File-Level Documentation
+
+- [ ] All new files include complete file headers following [documentation-standards.mdc](mdc:documentation-standards.mdc)
+- [ ] Modified files have updated headers reflecting any changes in purpose or connections
+- [ ] File purpose is clearly and accurately described
+- [ ] All connections to other components are documented
+- [ ] Production behavior section reflects current implementation
+
+### Interface and Schema Documentation
+
+- [ ] All interfaces and type definitions are thoroughly documented
+- [ ] All fields have descriptions explaining their purpose
+- [ ] Schema validation rules are described and explained
+- [ ] Any changes to existing interfaces are reflected in documentation
+
+### Function Documentation
+
+- [ ] All new functions have complete documentation
+- [ ] Modified functions have updated documentation reflecting changes
+- [ ] Function parameters and return values are documented
+- [ ] Function workflows are accurately described
+
+### Relationship Documentation
+
+- [ ] New relationships between components are documented in both components
+- [ ] Changes to existing relationships are reflected in documentation for all affected components
+
+### Code Organization
+
+- [ ] Code is organized into logical sections with clear headers
+- [ ] Section headers explain the purpose of each code section
+- [ ] Complex logic has inline comments explaining the reasoning
+
+## Special Review Considerations
+
+### Database Models
+
+When reviewing changes to database models, additionally check:
+- [ ] Model follows the standards in [model-documentation.mdc](mdc:model-documentation.mdc)
+- [ ] Schema field comments explain business logic
+- [ ] Indexing strategy is documented
+- [ ] Sensitive fields are identified
+
+### Agent Implementations
+
+When reviewing changes to agent files, additionally check:
+- [ ] Agent follows the standards in [agent-documentation.mdc](mdc:agent-documentation.mdc)
+- [ ] Command processing is clearly documented
+- [ ] Error handling strategy is explained
+- [ ] External integrations are documented
+
+## Documentation Debt
+
+If any documentation debt is identified:
+- [ ] Create appropriate tasks to address documentation gaps
+- [ ] Consider documentation debt blockers before merging critical changes
+- [ ] Prioritize documentation improvements for frequently changed files

@@ -52,24 +52,23 @@ This system provides three distinct AI agents through WhatsApp:
 
 4. Update the `.env` file with your API keys and configuration
 
+   The `MODE` environment variable controls whether the dashboard starts automatically:
+   - `MODE=development` (default): Both server and dashboard start with `npm run dev`
+   - `MODE=production`: Only the server starts with `npm run dev`
+
 5. Set up the project (creates directories, builds TypeScript, generates mock data, and seeds the database)
 
    ```bash
    npm run setup-all
    ```
 
-6. Start the development server
+6. Start the development server and dashboard concurrently
 
    ```bash
    npm run dev
    ```
 
-7. In a separate terminal, start the development dashboard
-
-   ```bash
-   cd dev-dashboard
-   npm start
-   ```
+   This will automatically start both the server and the development dashboard in development mode.
 
 ## Development
 
@@ -77,7 +76,8 @@ This system provides three distinct AI agents through WhatsApp:
 
 The project includes several npm scripts to help with development:
 
-- `npm run dev` - Start the development server with hot reloading
+- `npm run dev` - Start both the server and dashboard concurrently (development mode only)
+- `npm run dev:server` - Start only the server with hot reloading
 - `npm run build` - Build the TypeScript code
 - `npm run start` - Start the production server
 - `npm run create-dirs` - Create the necessary directories
@@ -87,6 +87,8 @@ The project includes several npm scripts to help with development:
 - `npm run setup-dashboard` - Set up the development dashboard
 - `npm run setup-all` - Run setup and setup-dashboard
 - `npm run test-agent` - Test the agent server with sample messages
+- `npm run start:concurrent` - Alternative way to start both server and dashboard
+- `npm run create-admin` - Create an initial admin user with full system access
 
 ### Directory Structure
 
@@ -105,6 +107,7 @@ The project includes several npm scripts to help with development:
     resend.ts
     vercel.ts
     ocr.ts
+    authService.ts
   /db
     connect.ts
     /models
@@ -114,6 +117,9 @@ The project includes several npm scripts to help with development:
       Inventory.ts
       Issue.ts
       Log.ts
+      Admin.ts
+      Staff.ts
+      AuthorizedNumber.ts
   /utils
     messageParser.ts
     promptBuilder.ts
@@ -130,6 +136,7 @@ The project includes several npm scripts to help with development:
   seedDatabase.js
   testAgent.js
   setupDevDashboard.js
+  createInitialAdmin.js
 /mock-data             # Generated mock data for testing
 ```
 
@@ -168,13 +175,8 @@ You can test the agent server using the development dashboard or the test script
 # Test using the script
 npm run test-agent
 
-# Test using the dashboard
-# In one terminal
+# Test using the dashboard (starts both server and dashboard)
 npm run dev
-
-# In another terminal
-cd dev-dashboard
-npm start
 ```
 
 ### Mock Data
@@ -188,6 +190,34 @@ npm run generate-mock-data
 # Seed the database with mock data
 npm run seed-database
 ```
+
+### Admin and Staff Management
+
+The system includes secure access control for admin and staff users:
+
+**Creating an initial admin user:**
+
+```bash
+# Build the project first if you haven't already
+npm run build
+
+# Create the admin user
+npm run create-admin
+```
+
+**Admin capabilities:**
+
+- Add staff members: `Add staff: John Doe, john@example.com, +1234567890, inventory`
+- List all staff: `List all staff`
+- Remove staff: `Remove staff: +1234567890`
+- Activate/deactivate staff: `Activate staff: +1234567890` or `Deactivate staff: +1234567890`
+
+**Security features:**
+
+- Only registered phone numbers can access staff and admin agents
+- Customer agent is open to all phone numbers
+- All admin and staff passwords are securely hashed
+- Phone numbers are normalized for consistent lookup
 
 ## License
 
@@ -203,11 +233,14 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - **Email Integration**: Send transactional and broadcast emails
 - **Content Management**: Update website content via Vercel API
 - **Development Dashboard**: Test agent interactions without WhatsApp
+- **Environment-Aware Execution**: Automatically adjusts behavior based on MODE (development/production)
+- **Admin and Staff Management**: Secure access control with admin-managed staff accounts
+- **Phone Number Authorization**: Only registered numbers can access staff and admin agents
 
 ## Roadmap
 
 - [ ] Implement real WhatsApp Business API integration
-- [ ] Add authentication and authorization
+- [x] Add authentication and authorization for admin and staff access
 - [ ] Enhance OCR capabilities for better label recognition
 - [ ] Implement more sophisticated agent logic
 - [ ] Add unit and integration tests

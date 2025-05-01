@@ -1,0 +1,113 @@
+---
+description:  This rule defines the documentation standards for the WhatsApp-Based AI Business Assistant codebase. Following these standards ensures the codebase remains understandable and maintainable by both humans and AI assistants.
+globs: 
+alwaysApply: false
+---
+# WhatsApp Business Assistant Documentation Standards
+
+This rule defines the documentation standards for the WhatsApp-Based AI Business Assistant codebase. Following these standards ensures the codebase remains understandable and maintainable by both humans and AI assistants.
+
+## File Header Structure
+
+All source files must include a complete header following this format:
+
+```typescript
+/**
+ * FILE: src/path/to/filename.ts
+ * ============================
+ * COMPONENT NAME
+ * 
+ * PURPOSE:
+ * Concise description of what this file does and its role in the system.
+ * 
+ * CONNECTIONS:
+ * - List relationships to other components/files
+ * - Show data flow into and out of this component
+ * - Identify trigger points and dependencies
+ * 
+ * PRODUCTION BEHAVIOR:
+ * 1. Numbered list of key behaviors in production
+ * 2. Operational characteristics to be aware of
+ * 3. Runtime expectations and interactions
+ * 
+ * DATABASE IMPACT: (if applicable)
+ * - Collection(s) affected
+ * - Write patterns and volume expectations
+ * - Indexing considerations
+ * 
+ * SECURITY/COMPLIANCE NOTES: (if applicable)
+ * - Security considerations for this component
+ * - Compliance requirements or privacy concerns
+ */
+```
+
+## Interface Documentation
+
+All interfaces must be documented with:
+
+```typescript
+/**
+ * INTERFACE: IExample
+ * -----------------
+ * Purpose statement for this interface.
+ * 
+ * FIELDS:
+ * - fieldName: Description of the field's purpose and usage
+ * - anotherField: Description with any special considerations
+ */
+```
+
+## Schema Documentation
+
+MongoDB schemas must include:
+
+```typescript
+/**
+ * SCHEMA: ExampleSchema
+ * ------------------
+ * Description of what this schema represents.
+ * 
+ * VALIDATION RULES:
+ * - Explanation of validation constraints
+ * 
+ * PRODUCTION CONSIDERATIONS:
+ * - Performance notes
+ * - Indexing recommendations
+ * - Scaling considerations
+ */
+```
+
+## Function Documentation
+
+All significant functions must include:
+
+```typescript
+/**
+ * FUNCTION: functionName
+ * -------------------
+ * Description of what this function does.
+ * 
+ * @param paramName Description of the parameter
+ * @returns Description of the return value
+ * 
+ * WORKFLOW:
+ * 1. Step-by-step explanation of the function's operation
+ * 2. Key decision points and logic flow
+ * 
+ * PRODUCTION NOTES: (if applicable)
+ * - Special considerations for production environment
+ */
+```
+
+## Section Organization
+
+Use clear section headers to organize code:
+
+```typescript
+/**
+ * SECTION: Section Name
+ * ------------------
+ * Description of what this section contains
+ */
+```
+

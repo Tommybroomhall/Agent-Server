@@ -1,0 +1,44 @@
+---
+description: This rule defines when and how documentation should be updated as the codebase evolves.
+globs: 
+alwaysApply: false
+---
+# Documentation Maintenance Procedures
+
+This rule defines when and how documentation should be updated as the codebase evolves.
+
+## When Documentation Must Be Updated
+
+Documentation must be updated in the following scenarios:
+
+1. **New Files**: All new files must include complete documentation following the standards in [documentation-standards.mdc](mdc:documentation-standards.mdc).
+
+2. **Modified Functions**: When a function's behavior, parameters, or return values change, its documentation must be updated to reflect the changes.
+
+3. **Interface Changes**: When fields are added, removed, or modified in an interface or schema, the documentation must be updated accordingly.
+
+4. **New Dependencies**: When a file creates new connections to other components, the CONNECTIONS section must be updated.
+
+5. **Behavior Changes**: When a component's behavior changes in production, the PRODUCTION BEHAVIOR section must be updated.
+
+6. **Database Impact Changes**: When database interactions change, the DATABASE IMPACT section must be updated.
+
+## Review Checklist
+
+Before submitting any code changes, verify that:
+
+1. All new files have complete documentation
+2. Documentation has been updated for modified components
+3. All documented connections accurately reflect the current code
+4. Sections are clearly labeled and formatted consistently
+5. Security and compliance notes are current and complete (if applicable)
+
+## Breadcrumb Maintenance
+
+"Breadcrumbs" are the structured documentation elements that help developers and AI assistants navigate the code. To maintain effective breadcrumbs:
+
+1. **Be Explicit**: All connections between components must be explicitly documented
+2. **Update Cross-References**: When changing a component name or location, update all references to it in other files
+3. **Maintain Consistency**: Use the exact same naming conventions across all documentation
+4. **Preserve Section Structure**: Keep the established section headers and formatting
+

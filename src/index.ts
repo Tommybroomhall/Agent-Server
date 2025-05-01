@@ -2,16 +2,16 @@
  * FILE: src/index.ts
  * ==================
  * MAIN SERVER ENTRY POINT
- * 
+ *
  * PURPOSE:
  * Main Express server application entry point that initializes the WhatsApp-Based AI Business Assistant.
  * This file bootstraps the entire application and serves as the central hub connecting all components.
- * 
+ *
  * CONNECTIONS:
  * - Imports routes from './routes/agentRouter' (handles agent-specific endpoints)
  * - Imports routes from './routes/webhookRouter' (handles external service webhooks)
  * - Connects to MongoDB via './db/connect'
- * 
+ *
  * PRODUCTION BEHAVIOR:
  * In production, this server will:
  * 1. Load environment variables from .env file (or environment)
@@ -20,7 +20,7 @@
  * 4. Mount agent and webhook routers to their respective endpoints
  * 5. Provide a health check endpoint for monitoring
  * 6. Listen on the specified port (from environment or default to 3001)
- * 
+ *
  * DEPLOYMENT NOTES:
  * - Requires environment variables as specified in .env.example
  * - Should be deployed behind a reverse proxy (nginx/Apache) for SSL termination
@@ -40,6 +40,7 @@ dotenv.config();
 // Initialize Express app
 const app = express();
 const PORT = process.env.PORT || 3001;
+const MODE = process.env.MODE || 'development';
 
 // SECTION: Middleware Configuration
 // --------------------------------
@@ -60,7 +61,7 @@ app.use('/webhook', webhookRouter);
 // ----------------------------
 // Simple endpoint for monitoring services to verify server is running
 // In production, this should be extended with deeper health checks (DB connectivity, etc.)
-app.get('/health', (req, res) => {
+app.get('/health', (_req, res) => {
   res.status(200).json({ status: 'ok', message: 'Agent server is running' });
 });
 
@@ -70,7 +71,7 @@ app.get('/health', (req, res) => {
 // If database connection fails, the application will terminate
 connectToMongo().then(() => {
   app.listen(PORT, () => {
-    console.log(`Agent server running at http://localhost:${PORT}`);
+    console.log(`Agent server running at http://localhost:${PORT} in ${MODE} mode`);
   });
 }).catch(err => {
   console.error('Failed to connect to MongoDB:', err);

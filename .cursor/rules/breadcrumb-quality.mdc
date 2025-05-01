@@ -1,0 +1,84 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Breadcrumb Documentation Quality Guidelines
+
+This rule provides specific guidelines for creating high-quality breadcrumb documentation in the WhatsApp Business Assistant codebase. Quality breadcrumbs help both developers and AI assistants efficiently navigate and understand the system.
+
+## What Makes Good Breadcrumbs
+
+Good breadcrumb documentation has these qualities:
+
+1. **Explicit**: Clearly states relationships without requiring inference
+2. **Specific**: Names exact files, functions, or data flows rather than general components
+3. **Complete**: Covers all significant connections, not just the obvious ones
+4. **Accurate**: Truthfully represents the current state of the system
+5. **Concise**: Provides necessary information without excessive text
+
+## Example Quality Comparisons
+
+### ❌ Poor Breadcrumb
+```
+// Connects to the database and handles orders
+```
+
+### ✅ Good Breadcrumb
+```
+/**
+ * CONNECTIONS:
+ * - Called by agentOrchestrator.ts to handle customer order queries
+ * - Uses Order model (src/db/models/Order.ts) for retrieving order data
+ * - Triggers notifications through whatsapp.ts when order status changes
+ */
+```
+
+## Cross-Referencing Standards
+
+When documenting connections between components:
+
+1. **Be Reciprocal**: If component A documents a connection to component B, component B should also document the connection to component A
+
+2. **Use Consistent Naming**: Refer to components using the same names consistently throughout the codebase:
+   ```
+   // Good: Referenced by customerAgent.ts for order status lookups
+   // Bad: Used by the customer agent for looking up orders
+   ```
+
+3. **Include File Paths**: For components in different directories, include relative paths:
+   ```
+   // Good: Imports validation functions from src/utils/validators.ts
+   // Bad: Uses validation utils
+   ```
+
+4. **Specify Function Names**: When particular functions are involved:
+   ```
+   // Good: Called by agentOrchestrator.handleMessage() when processing staff messages
+   // Bad: Called by the agent orchestrator
+   ```
+
+## Functional Flow Documentation
+
+For complex interactions between components, document the functional flow:
+
+```
+/**
+ * FUNCTIONAL FLOW:
+ * 1. Receives webhook data from WhatsApp API via webhookRouter.ts
+ * 2. Processes message text through NLP in textAnalysis.ts
+ * 3. Determines customer intent and routes to specific handler in customerAgent.ts
+ * 4. Retrieves order data from Order model if needed
+ * 5. Generates response using templates from responseBuilder.ts
+ * 6. Returns formatted message to webhookRouter.ts for delivery
+ */
+```
+
+## Breadcrumb Verification
+
+Periodically verify breadcrumb accuracy by:
+
+1. Checking that documented connections still exist in the code
+2. Ensuring all actual dependencies are documented
+3. Updating documentation when code paths change
+4. Removing obsolete connections that no longer exist
