@@ -23,7 +23,7 @@
   "license": "ISC",
   "description": "WhatsApp-Based AI Business Assistant",
   "dependencies": {
-    "@types/cors": "^2.8.17",
+    "@types/cors": "^2.8.18",
     "@types/express": "^5.0.1",
     "@types/node": "^22.15.3",
     "bcrypt": "^5.1.1",
